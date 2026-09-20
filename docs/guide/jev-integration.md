@@ -18,6 +18,10 @@ JevDash communicates with Jev via the **Vercel AI Gateway** using an OpenAI-comp
 - **Model Identifier**: `typesafe-ai/jev`
 - **Authentication**: Bearer token (`AI_GATEWAY_API_KEY`)
 
+::: tip Vercel Free Tier Availability
+TypeSafe Jev (`typesafe-ai/jev`) can be accessed using Vercel AI Gateway's free tier credits on standard Hobby accounts. This enables developers and researchers to benchmark real-time agent actuation without requiring commercial GPU hosting or paid API commitments.
+:::
+
 ### Configuration (.env)
 
 ```env

@@ -39,8 +39,8 @@
 
 1. **🛡️ 100% Clean-Room Architecture**:
    - Built entirely from scratch with custom physics, procedural levels, and programmatic cyber-minimalist graphics. Free from proprietary game ROMs or commercial assets.
-2. **⚡ Live TypeSafe Jev Integration**:
-   - Connects directly to the real `typesafe-ai/jev` model via Vercel AI Gateway. Supports sub-frame asynchronous decision pipelines so network latency never stutters the 60 FPS physics loop.
+2. **⚡ Live TypeSafe Jev Integration (Vercel Free Tier)**:
+   - Connects directly to the real `typesafe-ai/jev` model via Vercel AI Gateway's free tier (Hobby plan). Experience real-time physical control and benchmarking without costly GPU servers or paid enterprise API subscriptions. Supports sub-frame asynchronous decision pipelines so network latency never stutters the 60 FPS physics loop.
 3. **🎥 Continuous MP4 Video Recording**:
    - Integrated FFmpeg pipeline captures every frame into a crisp 1280×720 @ 60 FPS H.264 video (`.mp4`) automatically.
 4. **🚀 Zero-Key Ultra-Fast Mock Engine**:

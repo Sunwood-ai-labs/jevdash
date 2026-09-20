@@ -21,8 +21,8 @@ features:
     title: 100% クリーンルーム設計
     details: 既存の商用ゲームROMや著作権保護アセットを一切不使用。商用評価、OSSデモ、学術研究でも法的に安全です。
   - icon: ⚡
-    title: TypeSafe Jev 実モデル連携
-    details: Vercel AI Gateway（typesafe-ai/jev）と直接連携。Choice、Boolean、Score などの型安全プリミティブによる高速推論を実現。
+    title: TypeSafe Jev 実機連携（Vercel 無料枠対応）
+    details: Vercel AI Gateway（typesafe-ai/jev）の無料枠（Hobby プラン）から即座に利用可能。Choice、Boolean、Score などの型安全プリミティブによる高速推論を実現。
   - icon: 🎥
     title: リアルタイム MP4 録画
     details: FFmpeg パイプラインを内蔵し、1280x720 60 FPS の高精細 H.264 ゲームプレイ動画を自動キャプチャ。

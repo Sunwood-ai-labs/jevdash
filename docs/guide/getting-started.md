@@ -46,7 +46,11 @@ Run the autonomous AI autopilot using the built-in deterministic analytical engi
 uv run jevdash play --mode mock
 ```
 
-### 3. Live Jev Model via Vercel AI Gateway
+### 3. Live Jev Model via Vercel AI Gateway (Free Tier)
+
+::: tip Vercel Free Tier Supported
+TypeSafe Jev is accessible through Vercel AI Gateway's free tier (Hobby plan). You can experiment with the real live model without requiring paid subscriptions or expensive GPU servers.
+:::
 
 To play with the real, live **TypeSafe Jev** model (`typesafe-ai/jev`):
 

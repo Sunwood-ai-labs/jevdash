@@ -52,7 +52,11 @@ uv run jevdash play --mode human
 uv run jevdash play --mode mock
 ```
 
-### 3. Vercel AI Gateway 経由の実モデル連携モード
+### 3. Vercel AI Gateway 経由の実モデル連携モード（無料枠対応）
+
+::: tip Vercel 無料枠（Hobby プラン）で利用可能
+TypeSafe Jev は Vercel AI Gateway の無料利用枠でアクセス可能です。高額な GPU インフラの契約や有料サブスクリプションを必要とせず、誰でも手軽に実機モデルの自律走行を体験できます。
+:::
 
 Vercel AI Gateway 上で動作する本物の **TypeSafe Jev**（`typesafe-ai/jev`）を用いて実行します：
 

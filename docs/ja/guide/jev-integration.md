@@ -18,6 +18,10 @@ JevDash は、OpenAI 互換のインターフェースを通じて **Vercel AI G
 - **モデル名**: `typesafe-ai/jev`
 - **認証**: Bearer トークン（`AI_GATEWAY_API_KEY`）
 
+::: tip Vercel 無料枠（Hobby プラン）に対応
+TypeSafe Jev（`typesafe-ai/jev`）は、Vercel AI Gateway の標準無料枠クレジット（Hobby アカウント）から直接呼び出し可能です。商用 GPU サーバーの立ち上げや有料 API サブスクリプションなしで、誰でも即座にリアルタイム AI 物理制御の検証が可能です。
+:::
+
 ### 環境変数設定（.env）
 
 ```env
