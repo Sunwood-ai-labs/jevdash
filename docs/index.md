@@ -32,5 +32,5 @@ features:
 ---
 
 <div style="text-align: center; margin-top: 2rem;">
-  <img src="/stage_clear.png" alt="JevDash Stage Clear" style="border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); max-width: 100%;">
+  <img src="/gameplay.gif" alt="JevDash Live Gameplay Demo" style="border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); max-width: 100%;">
 </div>
