@@ -6,8 +6,8 @@ hero:
   text: "Autonomous AI 2D Platformer"
   tagline: "100% Clean-Room, Copyright-Free 60 FPS Benchmark for TypeSafe Jev AI"
   image:
-    src: /icon.svg
-    alt: JevDash Logo
+    src: /gameplay.gif
+    alt: JevDash Live Gameplay
   actions:
     - theme: brand
       text: Getting Started
@@ -31,6 +31,13 @@ features:
     details: Beautiful live dashboard displaying probability bar charts, danger meters, latency timers, and 7x11 ASCII radar.
 ---
 
-<div style="text-align: center; margin-top: 2rem;">
+## 🎮 Live AI Gameplay Showcase
+
+<div style="text-align: center; margin: 1.5rem 0 2rem 0;">
   <img src="/gameplay.gif" alt="JevDash Live Gameplay Demo" style="border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); width: 100%;">
 </div>
+
+### Real-Time Telemetry & Perception
+- **Asynchronous Decision Pipeline**: Sub-frame AI queries without stuttering the 60 FPS physics loop.
+- **Physical HUD**: Real-time Choice probability distribution, Danger Score (1–10), latency monitor, and 7×11 ASCII local radar.
+- **Continuous Recording**: Auto-captures gameplay to high-definition H.264 MP4 videos.

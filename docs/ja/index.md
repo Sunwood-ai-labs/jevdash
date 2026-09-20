@@ -6,8 +6,8 @@ hero:
   text: "自律型AI 2Dプラットフォーマー"
   tagline: "100% クリーンルーム・著作権フリー設計の TypeSafe Jev 向け 60 FPS ベンチマーク"
   image:
-    src: /icon.svg
-    alt: JevDash ロゴ
+    src: /gameplay.gif
+    alt: JevDash リアルタイム自律走行
   actions:
     - theme: brand
       text: クイックスタート
@@ -31,6 +31,13 @@ features:
     details: リアルタイム確率バー、危険度メーター、推論レイテンシ計測、7x11 ASCII レーダーを備えた洗練されたHUDを搭載。
 ---
 
-<div style="text-align: center; margin-top: 2rem;">
+## 🎮 リアルタイム AI 自律走行デモ
+
+<div style="text-align: center; margin: 1.5rem 0 2rem 0;">
   <img src="/gameplay.gif" alt="JevDash リアルタイム自律走行デモ" style="border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); width: 100%;">
 </div>
+
+### リアルタイム・テレメトリと知覚
+- **非同期意思決定パイプライン**: 60 FPS の物理ループを一切阻害せずに Jev モデルへサブフレーム推論をディスパッチ。
+- **Keynote スタイル HUD**: Choice 確率分布バー、危険度スコア（1〜10）、推論レイテンシ、7×11 ASCII 空間レーダーをリアルタイム表示。
+- **常時 MP4 録画**: 全走行フレームを 1280×720 60 FPS (H.264) の高画質動画として自動エンコード。
