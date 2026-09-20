@@ -29,7 +29,9 @@
 
 ---
 
-![JevDash Live Gameplay](assets/gameplay.gif)
+<p align="center">
+  <img src="assets/gameplay.gif" alt="JevDash Live Gameplay" width="100%">
+</p>
 
 > **JevDash: System One** is a 100% clean-room, copyright-free 2D side-scrolling platformer designed specifically for testing, benchmarking, and demonstrating **TypeSafe AI's Jev** model in real-time control scenarios at 60 FPS. It completely eliminates all copyright and ROM risks associated with commercial games like `gym-super-mario-bros`.
 

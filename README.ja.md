@@ -29,7 +29,9 @@
 
 ---
 
-![JevDash Live Gameplay](assets/gameplay.gif)
+<p align="center">
+  <img src="assets/gameplay.gif" alt="JevDash Live Gameplay" width="100%">
+</p>
 
 > **JevDash: System One** は、**TypeSafe AI の Jev モデル** を 60 FPS のリアルタイム制御環境でテスト・ベンチマークするためにゼロから設計された、**100% クリーンルーム・著作権フリー**の 2D 横スクロールアクションゲームです。`gym-super-mario-bros` などの商用ゲームROMに起因する法的リスクを完全に排除しています。
 
