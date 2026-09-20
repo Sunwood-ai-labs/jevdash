@@ -67,11 +67,11 @@
 本プロジェクトは高速パッケージマネージャ `uv` で管理されています。
 
 ```powershell
-cd C:\Prj\jev-platformer
+git clone https://github.com/Sunwood-ai-labs/jevdash.git
+cd jevdash
 
-# 仮想環境の作成と依存関係のインストール
-uv venv --python 3.13
-uv pip install -e ".[dev]"
+# 依存関係の同期（仮想環境自動作成）
+uv sync --extra dev
 ```
 
 ---
