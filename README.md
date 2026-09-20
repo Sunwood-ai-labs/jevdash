@@ -1,60 +1,83 @@
-# JevDash: System One 🎮 (Autonomous AI Benchmark)
+<div align="center">
+  <img src="assets/icon.svg" alt="JevDash Logo" width="160">
+  <h1>JevDash: System One</h1>
+  <p><strong>100% Clean-Room, Copyright-Free 2D Autonomous AI Platformer Benchmark (60 FPS)</strong></p>
 
-**100% クリーンルーム・著作権フリー**の Jev AI リアルタイム意思決定ベンチマーク用 2D 横スクロールアクションゲーム。
+  <p>
+    <a href="https://github.com/Sunwood-ai-labs/jevdash/actions/workflows/ci.yml">
+      <img src="https://img.shields.io/badge/CI-Passing-34d399?logo=githubactions&logoColor=white" alt="CI Status">
+    </a>
+    <a href="https://sunwood-ai-labs.github.io/jevdash/">
+      <img src="https://img.shields.io/badge/Docs-VitePress-c084fc?logo=vitepress&logoColor=white" alt="Documentation">
+    </a>
+    <img src="https://img.shields.io/badge/Physics-60_FPS_Deterministic-38bdf8?logo=python&logoColor=white" alt="60 FPS Physics">
+    <img src="https://img.shields.io/badge/Model-TypeSafe_Jev-fbbf24" alt="TypeSafe Jev">
+    <a href="LICENSE">
+      <img src="https://img.shields.io/badge/License-MIT-slate" alt="License: MIT">
+    </a>
+  </p>
 
-任天堂のROMバイナリに依存する `gym-super-mario-bros` 等の著作権リスクを完全に排除し、企業・研究・オープンソースコミュニティで誰でも安全・合法にデモや技術検証ができるようにゼロから設計・実装されています。
+  <p>
+    <a href="README.md">
+      <img src="https://img.shields.io/badge/Language-English-blue.svg" alt="English">
+    </a>
+    <a href="README.ja.md">
+      <img src="https://img.shields.io/badge/Language-日本語-lightgrey.svg" alt="日本語">
+    </a>
+  </p>
+</div>
 
 ---
 
 ![JevDash Stage Clear](assets/stage_clear.png)
 
-> **JevDash: System One** is a 100% clean-room, copyright-free 2D side-scrolling platformer designed specifically for benchmarking and testing **TypeSafe AI's Jev** model in real-time control scenarios at 60 FPS. Completely eliminates all copyright and ROM risks associated with commercial games like `gym-super-mario-bros`.
+> **JevDash: System One** is a 100% clean-room, copyright-free 2D side-scrolling platformer designed specifically for testing, benchmarking, and demonstrating **TypeSafe AI's Jev** model in real-time control scenarios at 60 FPS. It completely eliminates all copyright and ROM risks associated with commercial games like `gym-super-mario-bros`.
 
 ---
 
-## 🌟 特徴
+## 🌟 Key Features
 
-1. **完全著作権フリー（Clean-Room Architecture）**:
-   - 独自の物理エンジン、ネオン・サイバーミニマルなプログラマティック描画、オリジナルステージ設計。商用ゲームROMや外部画像アセットを一切必要としません。
-2. **本物の Jev 実機推論（Vercel AI Gateway 連携）対応**:
-   - Vercel AI Gateway 経由で本物の Jev モデル（`typesafe-ai/jev`）に直結し、リアルタイムに自律走行を制御。
-3. **常時 MP4 動画キャプチャ機能（FFmpeg 統合）**:
-   - ゲームプレイ中の 1280x720 60FPS 画面をリアルタイムに H.264 MP4 動画として自動エンコード・保存。
-4. **APIキー不要の超高速 Mock AI も標準内蔵**:
-   - API キーがなくても、組み込みの決定エンジンにより、Jev 同様の確率分布バーチャートと 100% ステージクリアの自律プレイを即座に体験可能。
-5. **Apple HIG / Keynote スタイルのリアルタイム HUD**:
-   - 画面右側に Jev の思考確率分布（Choice）、危険度メーター（Danger Score 1〜10）、推論レイテンシ（ms）、局所レーダー（ASCII）を美しく同時描画。
-6. **人間プレイ ＆ ヘッドレスベンチマーク両対応**:
-   - 手動キーボード操作（WASD/矢印キー）と自律AIのワンタッチ切替（Tabキー）。
+1. **🛡️ 100% Clean-Room Architecture**:
+   - Built entirely from scratch with custom physics, procedural levels, and programmatic cyber-minimalist graphics. Free from proprietary game ROMs or commercial assets.
+2. **⚡ Live TypeSafe Jev Integration**:
+   - Connects directly to the real `typesafe-ai/jev` model via Vercel AI Gateway. Supports sub-frame asynchronous decision pipelines so network latency never stutters the 60 FPS physics loop.
+3. **🎥 Continuous MP4 Video Recording**:
+   - Integrated FFmpeg pipeline captures every frame into a crisp 1280×720 @ 60 FPS H.264 video (`.mp4`) automatically.
+4. **🚀 Zero-Key Ultra-Fast Mock Engine**:
+   - Works immediately out of the box without any API key. Includes an analytical decision engine matching Jev's output format with a 100% stage-clear rate.
+5. **📊 Apple HIG / Keynote Style HUD**:
+   - Real-time display showing Choice probability distribution bar charts, Danger Score (1–10), inference latency counter, and 7×11 ASCII spatial radar.
+6. **🎮 Seamless AI & Human Control**:
+   - Play manually with smooth keyboard controls, or toggle instant AI autopilot at any moment with the `Tab` key.
 
 ---
 
-## 🏗️ アーキテクチャ
+## 🏗️ Architecture
 
 ```text
 ┌─────────────────────────────────────────────────────────────┐
 │                   Pygame 2D Engine (60 FPS)                 │
-│        プレイヤー・敵・地形衝突・コヨーテタイム物理演算     │
+│        Player velocity, jump arc, stomp & terrain physics   │
 └──────────────────────────────┬──────────────────────────────┘
-                               │ 毎 8 フレーム (約 133ms 周期)
+                               │ Every 8 frames (~133ms)
                                ▼
 ┌─────────────────────────────────────────────────────────────┐
 │                 Telemetry Extractor (Pydantic)              │
-│       マリオの位置、速度、敵との衝突予測時間、穴・壁距離    │
+│     Coordinates, velocities, time-to-collision, pit horizons │
 └──────────────────────────────┬──────────────────────────────┘
-                               │ 構造化 JSON (JevObservation)
+                               │ Structured JSON (JevObservation)
                                ▼
 ┌─────────────────────────────────────────────────────────────┐
-│               Decision Layer (Jev / Mock Jev)               │
-│   ・Choice  : 7 つの行動マクロから確率選択                  │
-│   ・Boolean : 緊急ジャンプの必要性を真偽判定                │
-│   ・Score   : 直前の危険度を 1〜10 採点 (50ms 以下)         │
+│               Decision Layer (Live Jev / Mock)              │
+│   ・Choice  : Discrete action macro & probability logits    │
+│   ・Boolean : Critical jump urgency                         │
+│   ・Score   : Immediate physical danger (1-10)              │
 └──────────────────────────────┬──────────────────────────────┘
-                               │ アクション実行 (right_run_jump 等)
+                               │ Committed action (e.g. right_run_jump)
                                ▼
 ┌─────────────────────────────────────────────────────────────┐
 │            HUD Dashboard (Keynote Style Live View)          │
-│       確率分布バーチャート、レイテンシ、危険度メーター描画  │
+│       Probability bars, latency timer, danger meter, radar  │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -62,66 +85,78 @@
 
 ---
 
-## 📦 セットアップ（uv を使用）
+## 📦 Quick Start (Powered by `uv`)
 
-本プロジェクトは高速パッケージマネージャ `uv` で管理されています。
+This project is managed with the ultra-fast Python package manager [`uv`](https://docs.astral.sh/uv/).
 
 ```powershell
+# 1. Clone repository
 git clone https://github.com/Sunwood-ai-labs/jevdash.git
 cd jevdash
 
-# 依存関係の同期（仮想環境自動作成）
+# 2. Sync virtual environment and dependencies
 uv sync --extra dev
+
+# 3. Launch interactive game!
+# (A) Play manually with keyboard (Tab to toggle AI Autopilot)
+uv run jevdash play --mode human
+
+# (B) Run with built-in simulated AI (No API key required)
+uv run jevdash play --mode mock
+
+# (C) Run with live Jev via Vercel AI Gateway
+# Copy .env.example to .env and set your AI_GATEWAY_API_KEY first:
+uv run jevdash play --mode live --record jevdash_live.mp4
 ```
 
 ---
 
-## 🚀 使い方・コマンド
+## 🕹️ Controls
 
-### 1. 本物の Jev でプレイ ＆ MP4 動画自動録画
-Vercel AI Gateway 経由で本物の Jev（`typesafe-ai/jev`）に操作させ、MP4 動画を出力します。
+| Action | Keys | Description |
+| :--- | :--- | :--- |
+| **Move** | `←` / `→` or `A` / `D` | Walk / steer horizontally |
+| **Dash** | `Shift` (Hold) | Sprint at top dash speed |
+| **Jump** | `Space` or `W` / `↑` | Jump (hold for maximum leap height) |
+| **Enemy Stomp**| Land on enemy top | Defeat enemy and bounce upwards |
+| **Toggle Autopilot**| `Tab` | **Switch between AI and Manual control instantly** |
+| **Restart** | `R` | Reset level to starting position |
+| **Quit** | `Q` or `Esc` | Exit game cleanly |
+
+---
+
+## 🚀 CLI Commands
+
 ```powershell
+# Interactive gameplay with live HUD and MP4 recording
 uv run jevdash play --mode live --record jevdash_live.mp4
-```
 
-### 2. 人間が手動操作でプレイ ＆ 録画
-手動でアクションゲームを遊びながら、プレイ動画を記録します。
-```powershell
-uv run jevdash play --mode human --record jevdash_human.mp4
-```
-* **操作キー**:
-  * `左右矢印` または `A/D`: 移動
-  * `Shift`: ダッシュ（Run）
-  * `Space` または `上矢印` / `W`: ジャンプ
-  * `Tab`: **AI 自律プレイ ⇄ 手動人間プレイの即時切替**
-  * `R`: ステージのリスタート
-  * `Q` または `Esc`: ゲーム終了
-
-### 3. 超高速 Mock AI による自律走行（100%クリア検証）
-```powershell
-uv run jevdash play --mode mock
-```
-
-### 4. 構造化 JSON テレメトリの確認（APIキー不要）
-```powershell
+# Inspect canonical JSON telemetry sent to Jev without opening a window
 uv run jevdash state-demo
-```
 
-### 5. 高速ヘッドレスベンチマーク
-```powershell
+# Fast headless benchmark (1,000+ frames in 0.1s)
 uv run jevdash benchmark --episodes 5
 ```
 
 ---
 
-## 🧪 テストの実行
+## 🧪 Automated Testing
 
 ```powershell
 uv run pytest -v
 ```
-物理演算、接地・コヨーテタイム、テレメトリ抽出、Vercel AI Gateway 接続、MP4 レコーダーのユニットテスト（全12件）が実行されます。
+
+All 13 unit tests covering physics collision, stomp dynamics, telemetry extraction, Vercel AI Gateway connectivity, and FFmpeg video recording are verified automatically.
 
 ---
 
-## 📄 ライセンス
-MIT License - 商用・非商用問わず完全自由にご利用いただけます。
+## 📚 Documentation
+
+- English Documentation: [https://sunwood-ai-labs.github.io/jevdash/](https://sunwood-ai-labs.github.io/jevdash/)
+- Japanese Documentation: [https://sunwood-ai-labs.github.io/jevdash/ja/](https://sunwood-ai-labs.github.io/jevdash/ja/)
+
+---
+
+## 📄 License
+
+[MIT License](LICENSE) - Free for commercial, personal, and research use.
