@@ -1,10 +1,13 @@
 """Unit test for FFmpeg-based VideoRecorder."""
 
 import os
+import shutil
+import pytest
 import pygame
 from jev_platformer.ui.video_recorder import VideoRecorder
 
 
+@pytest.mark.skipif(shutil.which("ffmpeg") is None, reason="FFmpeg is not installed or available on PATH")
 def test_video_recorder_generates_valid_mp4(tmp_path):
     pygame.init()
     surface = pygame.Surface((320, 240))
