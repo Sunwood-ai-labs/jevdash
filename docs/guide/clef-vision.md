@@ -74,7 +74,10 @@ The source game contains no sound, so recordings are deliberately silent.
 Each run requires an empty output directory, so previous captures and hashes cannot
 be overwritten or accidentally reused. The output directory contains per-episode MP4 files, frame-level action/world
 logs, inference logs, model environment and checkpoint identity, image inputs,
-and summaries. Decisions identify their source frame, input-image hashes,
+and summaries. Every response has an explicit `response_status`: `applied` or
+`unapplied_after_episode`. Late answers received after death, goal, timeout, or
+cancellation keep their receive timestamps but have null application timestamps
+and never change the controls. Decisions identify their source frame, input-image hashes,
 model-only latency, and full capture-to-action delay. Model-input PNGs are saved
 under `observations/`; episode 00 is warmup and is not scored. Gameplay videos
 include a live wall-clock counter, physics time, model choices/probabilities,

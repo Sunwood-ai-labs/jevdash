@@ -67,6 +67,23 @@ def public_request(req):
     return {k: v for k, v in req.items() if k != "images"}
 
 
+def annotate_response(result, now, frame, terminal):
+    """Distinguish receiving an answer from actually applying it to a live episode."""
+    applied = terminal is None
+    delay_ms = (now - result["observed_mono"]) * 1000
+    return {
+        **result,
+        "response_status": "applied" if applied else "unapplied_after_episode",
+        "received_mono": now,
+        "received_frame": frame,
+        "capture_to_receive_ms": delay_ms,
+        "applied_mono": now if applied else None,
+        "applied_frame": frame if applied else None,
+        "end_to_end_ms": delay_ms if applied else None,
+        "observation_age_frames": frame - result["observed_frame"],
+    }
+
+
 def wait_ready(worker, responses, timeout=1500):
     """Bound load time while detecting a process killed before it can report an error."""
     deadline = time.perf_counter() + timeout
@@ -479,10 +496,7 @@ def run_episode(
                     raise TimeoutError(
                         "Clef decision exceeded 10 real seconds; stale action was not applied"
                     )
-                result["applied_mono"] = now
-                result["applied_frame"] = frame
-                result["end_to_end_ms"] = (now - result["observed_mono"]) * 1000
-                result["observation_age_frames"] = frame - result["observed_frame"]
+                result = annotate_response(result, now, frame, terminal)
                 logs.write(json.dumps(result) + "\n")
                 logs.flush()
                 if terminal is None:

@@ -190,6 +190,24 @@ def test_slow_fixture_does_not_pause_physics_or_video(tmp_path):
         assert frames[first_decision]["physics_updates"] >= 20
         assert all(row["action"] == "noop" for row in frames[:first_decision])
         assert frames[-1]["status"] == "time_limit"
+        logs = [
+            json.loads(line)
+            for line in (tmp_path / f"episode-{ep['episode']:02d}-decisions.jsonl")
+            .read_text()
+            .splitlines()
+        ]
+        late = [
+            row
+            for row in logs
+            if row.get("response_status") == "unapplied_after_episode"
+        ]
+        assert late, (
+            "The slow fixture should return a final answer after the time limit"
+        )
+        for row in late:
+            assert row["applied_frame"] is None and row["applied_mono"] is None
+            assert row["end_to_end_ms"] is None
+            assert all(frame["decision_id"] != row["request_id"] for frame in frames)
 
 
 @pytest.mark.skipif(
@@ -388,3 +406,33 @@ def test_expired_queued_decision_cannot_bypass_deadline(tmp_path, monkeypatch):
             )
     finally:
         pygame.quit()
+
+
+@pytest.mark.parametrize("terminal", ["goal", "died", "time_limit", "cancelled"])
+def test_post_episode_response_is_explicitly_unapplied(terminal):
+    from jev_platformer.vision_trial import annotate_response
+
+    response = annotate_response(
+        {"request_id": 7, "observed_mono": 10, "observed_frame": 60},
+        10.8,
+        108,
+        terminal,
+    )
+    assert response["response_status"] == "unapplied_after_episode"
+    assert response["received_frame"] == 108
+    assert response["capture_to_receive_ms"] == pytest.approx(800)
+    assert response["applied_frame"] is None
+    assert response["applied_mono"] is None
+    assert response["end_to_end_ms"] is None
+
+
+def test_live_episode_response_keeps_real_application_timestamp():
+    from jev_platformer.vision_trial import annotate_response
+
+    response = annotate_response(
+        {"request_id": 7, "observed_mono": 10, "observed_frame": 60}, 10.8, 108, None
+    )
+    assert response["response_status"] == "applied"
+    assert response["applied_frame"] == 108
+    assert response["applied_mono"] == 10.8
+    assert response["end_to_end_ms"] == pytest.approx(800)
