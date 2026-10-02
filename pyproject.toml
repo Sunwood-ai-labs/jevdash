@@ -15,6 +15,12 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
+vision-recording = ["av==16.1.0", "numpy>=2,<3", "Pillow>=11"]
+clef = [
+  "av==16.1.0", "numpy>=2,<3", "Pillow>=11",
+  "torch==2.11.0", "torchvision==0.26.0", "transformers==5.10.2",
+  "accelerate", "huggingface_hub", "safetensors",
+]
 dev = [
   "pytest>=8.0.0",
   "ruff>=0.4.0",
@@ -27,3 +33,6 @@ jev-runner = "jev_platformer.cli:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/jev_platformer"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["jev_platformer"]

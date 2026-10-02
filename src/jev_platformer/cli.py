@@ -272,6 +272,13 @@ def main():
     play_p.add_argument("--record", type=str, default="jevdash_gameplay.mp4", help="Path to save MP4 video recording")
     play_p.add_argument("--max-frames", type=int, default=0, help="Exit after N frames (0 for unlimited)")
 
+    # Optional screenshot-only local Clef mode. Lazy import keeps existing modes lightweight.
+    vision_p = subparsers.add_parser("vision-clef", help="Run unpaused screenshot-only Clef trials (optional extra)")
+    vision_p.add_argument("--out", default="clef-vision-output", help="Directory for timestamped MP4 and audit logs")
+    vision_p.add_argument("--episodes", type=int, default=3, help="Number of episodes, 1 to 3")
+    vision_p.add_argument("--seconds", type=float, default=60, help="Real seconds per episode, at most 60")
+    vision_p.add_argument("--smoke", action="store_true", help="Marked slow test fixture; does NOT run Clef")
+
     # Live command (alias for play --mode live)
     live_p = subparsers.add_parser("live", help="Launch game driven directly by real Jev via Vercel AI Gateway")
     live_p.add_argument("--record", type=str, default="jevdash_live.mp4", help="Path to save MP4 video recording")
@@ -286,7 +293,13 @@ def main():
 
     args = parser.parse_args()
 
-    if args.command == "state-demo":
+    if args.command == "vision-clef":
+        from jev_platformer.vision_trial import main as vision_main
+        vision_argv = ["--out", args.out, "--episodes", str(args.episodes), "--seconds", str(args.seconds)]
+        if args.smoke:
+            vision_argv.append("--smoke")
+        vision_main(vision_argv)
+    elif args.command == "state-demo":
         run_state_demo()
     elif args.command == "benchmark":
         run_benchmark(episodes=args.episodes)

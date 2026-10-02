@@ -162,3 +162,11 @@ All 13 unit tests covering physics collision, stomp dynamics, telemetry extracti
 ## 📄 License
 
 [MIT License](LICENSE) - Free for commercial, personal, and research use.
+
+## Optional screenshot-only Clef experiment
+
+An additional `vision-clef` command lets **Clef-Flash 9B see actual game images**
+and choose actions asynchronously while the original game continues at 60 Hz.
+All existing modes and features remain available. Optional GPU/recording
+requirements, unpaused timing semantics, evidence logs and the clearly marked
+CPU-only test fixture are documented in [Clef vision](docs/guide/clef-vision.md).
